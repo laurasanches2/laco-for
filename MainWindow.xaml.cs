@@ -15,12 +15,31 @@ public partial class MainWindow : Window
 
     private async void BotaoSorteio_OnClick(object sender, RoutedEventArgs e)
     {
-        btsorteio.IsEnabled = false;
         
         var quantidadetexto = tbQuantidade.Text;
-        var quantidadedesorteios = Convert.ToInt32(quantidadetexto);
-        if (quantidadedesorteios < 1) quantidadedesorteios = 1;
+        int quantidadedesorteios;
+        try
+        {
+            quantidadedesorteios = Convert.ToInt32(quantidadetexto);
+        }
+        catch (FormatException)
+        {
+            MessageBox.Show("entrada invalida. Coloque apenas numeros de 1 para cima ")
+            return;
+        }
+        catch (OverflowException)
+        {
+            MessageBox.Show("erro! O numero digirado é maior que o numero suportado ");
+            return;           
+        }
+        
+        btsorteio.IsEnabled = false;
 
+        if (quantidadedesorteios < 1)
+        {
+            quantidadedesorteios = 1;
+        }
+        
         var sorteador = new Random();
         
         for (var contador = 0; contador < quantidadedesorteios; contador++)
