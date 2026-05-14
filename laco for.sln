@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laco for", "laco for.csproj", "{5F01DDDD-229B-4EEE-9C1B-59FC11A4043F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F01DDDD-229B-4EEE-9C1B-59FC11A4043F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F01DDDD-229B-4EEE-9C1B-59FC11A4043F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F01DDDD-229B-4EEE-9C1B-59FC11A4043F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F01DDDD-229B-4EEE-9C1B-59FC11A4043F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

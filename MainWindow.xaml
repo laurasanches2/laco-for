@@ -1,0 +1,34 @@
+﻿<Window x:Class="laco_for.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#1E293B">
+        <StackPanel Width="580" VerticalAlignment="Center">
+            <!--Grupo Principal-->
+            <StackPanel Background="#0f172a" Margin="0 0 0 24"> <!-- Grupo cabeçalho-->
+                <TextBlock Text="seu saldo" Foreground="#94A3BB" FontWeight="Bold" FontSize="12" Margin="16 16 16 0" />
+                <TextBlock Text="R$ 0,00" Foreground="#34D399" FontWeight="Bold" FontSize="30" Margin=" 16 0 16 16" />
+            </StackPanel>
+
+            <StackPanel Background="#0f172a"> <!-- Grupo aposta -->
+                <TextBlock x:Name="tbresultado" Text="0" Foreground="#94A3B8" FontSize="20" Margin="16 16 16 0" />
+                <StackPanel Orientation="Horizontal" Margin="16 0"> <!-- Grupos giro-->
+                    <TextBlock Text="quantidade de giros" Foreground="#94A3B8" FontWeight="Bold"
+                               FontSize="20" />
+                    <TextBox Text="1" FontSize="20" x:Name="tbQuantidade" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="16 0"> <!--grupo custo total-->
+                    <TextBlock Text="custo total:" Foreground="#94A3BB" FontWeight="Bold" FontSize="20" />
+                    <TextBlock Text="10,00" Foreground="#94A3BB" FontSize="20" />
+                </StackPanel>
+
+                <Button Background="#F59E0B" FontSize="20" Width="480" Height="56" Content="confirma sorteio"
+                        Foreground="#0F172A" FontWeight="Bold" Margin=" 0 8 0 16"
+                        Click="BotaoSorteio_OnClick" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
