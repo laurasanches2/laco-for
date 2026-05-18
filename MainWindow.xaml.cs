@@ -8,6 +8,8 @@ namespace laco_for;
 public partial class MainWindow : Window
 {
     public decimal saldoinicial = 1234.00m;
+    private string[] emoticons = { "🐯", "🍊", "💎", "💰", "🍒", "🔔" };
+    
     public MainWindow()
     {
         InitializeComponent();
@@ -15,22 +17,11 @@ public partial class MainWindow : Window
 
     private async void BotaoSorteio_OnClick(object sender, RoutedEventArgs e)
     {
-        
-        var quantidadetexto = tbQuantidade.Text;
-        int quantidadedesorteios;
-        try
+
+        if (!int.TryParse(tbQuantidade.Text, out var quantidadedesorteios))
         {
-            quantidadedesorteios = Convert.ToInt32(quantidadetexto);
-        }
-        catch (FormatException)
-        {
-            MessageBox.Show("entrada invalida. Coloque apenas numeros de 1 para cima ")
+            MessageBox.Show("coloque apenas valores numericos!");
             return;
-        }
-        catch (OverflowException)
-        {
-            MessageBox.Show("erro! O numero digirado é maior que o numero suportado ");
-            return;           
         }
         
         btsorteio.IsEnabled = false;
@@ -46,9 +37,32 @@ public partial class MainWindow : Window
         {
             if (saldoinicial >= 10M)
             {
-                tbresultado.Text = sorteador.Next(0, 4000000).ToString();
+               
                 saldoinicial -= 10M;
                 tbSaldo.Text =  $"R$ {saldoinicial}";
+
+                var numeroSorteado = sorteador.Next(40000001);
+                if (numeroSorteado == 3)
+                {
+                    tbSlot1.Text = emoticons[0];
+                    tbSlot2.Text = emoticons[0];
+                    tbSlot3.Text = emoticons[0];
+                    saldoinicial += 20M;
+                    tbSaldo.Text = $"R$ {saldoinicial}";
+                }
+                else
+                {
+                    int Slot1, Slot2, Slot3;
+                    do
+                    {
+                        Slot1 = sorteador.Next(emoticons.Length);
+                        Slot2 = sorteador.Next(emoticons.Length); 
+                        Slot3 = sorteador.Next(emoticons.Length);
+                        tbSlot1.Text = emoticons[Slot1];
+                        tbSlot2.Text = emoticons[Slot2];
+                        tbSlot3.Text = emoticons[Slot3];
+                    } while (Slot1 == Slot2 && Slot2 == Slot3);
+                }
                 await Task.Delay(1000);
             }
             else
